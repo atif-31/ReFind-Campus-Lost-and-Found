@@ -119,3 +119,21 @@ GitHub: [atif-31](https://github.com/atif-31)
 ---
 
 *ReFind — Lost something? Find your way back.*
+
+
+## Screenshots
+
+### 1. ReFind Dashboard
+![ReFind Dashboard](screenshots/dashboard.png)
+
+### 2. Report Lost / Found
+![Report Form](screenshots/report-form.png)
+
+### 3. All Reports
+![All Reports](screenshots/all-reports.png)
+
+### 4. Possible Matches
+![Possible Matches](screenshots/possible-matches.png)
+
+### 5. Submission Success
+![Success Page](screenshots/success-page.png)
