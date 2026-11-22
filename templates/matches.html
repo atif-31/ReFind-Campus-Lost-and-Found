@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReFind | Possible Matches</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <!-- Header -->
+        <header class="page-header">
+
+            <div>
+                <h1>ReFind<span>.</span></h1>
+                <p>Campus Lost & Found Management System</p>
+            </div>
+
+            <a href="/" class="back-link">← Dashboard</a>
+
+        </header>
+
+
+        <main class="page-content">
+
+            <!-- Page Heading -->
+            <div class="page-title">
+
+                <p class="eyebrow">ITEM RECOVERY</p>
+
+                <h2>Possible Matches</h2>
+
+                <p>
+                    Potential connections between lost and found item reports.
+                </p>
+
+            </div>
+
+
+            <!-- Matches -->
+            {% if matches %}
+
+                <div class="matches-list">
+
+                    {% for match in matches %}
+
+                    <div class="match-card">
+
+                        <div class="match-card-header">
+
+                            <div>
+                                <span class="match-label">POSSIBLE MATCH</span>
+                                <h3>{{ match.lost.name|title }}</h3>
+                                <p>{{ match.lost.category|title }}</p>
+                            </div>
+
+                            <span class="match-indicator">Match Found</span>
+
+                        </div>
+
+
+                        <div class="match-comparison">
+
+                            <!-- Lost Report -->
+                            <div class="comparison-item">
+
+                                <span class="type-badge lost">Lost Report</span>
+
+                                <h4>Report #{{ match.lost.id }}</h4>
+
+                                <p>
+                                    <strong>Item:</strong>
+                                    {{ match.lost.name }}
+                                </p>
+
+                                <p>
+                                    <strong>Category:</strong>
+                                    {{ match.lost.category }}
+                                </p>
+
+                                <p>
+                                    <strong>Last Seen:</strong>
+                                    {{ match.lost.location }}
+                                </p>
+
+                                <p>
+                                    <strong>Status:</strong>
+                                    <span class="status-badge open">Open</span>
+                                </p>
+
+                            </div>
+
+
+                            <!-- Found Report -->
+                            <div class="comparison-item">
+
+                                <span class="type-badge found">Found Report</span>
+
+                                <h4>Report #{{ match.found.id }}</h4>
+
+                                <p>
+                                    <strong>Item:</strong>
+                                    {{ match.found.name }}
+                                </p>
+
+                                <p>
+                                    <strong>Category:</strong>
+                                    {{ match.found.category }}
+                                </p>
+
+                                <p>
+                                    <strong>Found At:</strong>
+                                    {{ match.found.location }}
+                                </p>
+
+                                <p>
+                                    <strong>Desk Status:</strong>
+                                    {{ match.found.desk_status|replace("_", " ")|title }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="match-footer">
+                            <p>
+                                Both reports have matching item names and categories.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            {% else %}
+
+                <!-- Empty State -->
+                <div class="empty-state">
+
+                    <div class="empty-icon">↔</div>
+
+                    <h3>No Possible Matches Found</h3>
+
+                    <p>
+                        When a lost report matches an open found report,
+                        it will appear here.
+                    </p>
+
+                    <a href="/reports" class="primary-button">
+                        View All Reports
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </main>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReFind | All Reports</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <header class="page-header">
+            <div>
+                <h1>ReFind<span>.</span></h1>
+                <p>Campus Lost & Found Management System</p>
+            </div>
+
+            <a href="/" class="back-link">← Dashboard</a>
+        </header>
+
+        <main class="page-content">
+
+            <div class="page-title">
+                <p class="eyebrow">RECORD MANAGEMENT</p>
+                <h2>All Reports</h2>
+                <p>View and manage all reported campus items.</p>
+            </div>
+
+            <div class="report-table-container">
+
+                {% if reports %}
+
+                <table class="report-table">
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Desk Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for report in reports %}
+
+                        <tr>
+
+                            <td>#{{ report.id }}</td>
+
+                            <td>
+                                <span class="type-badge {{ report.type }}">
+                                    {{ report.type|title }}
+                                </span>
+                            </td>
+
+                            <td>
+                                <strong>{{ report.name }}</strong>
+                            </td>
+
+                            <td>{{ report.category }}</td>
+
+                            <td>{{ report.location }}</td>
+
+                            <td>
+                                <span class="status-badge {{ report.status }}">
+                                    {{ report.status|title }}
+                                </span>
+                            </td>
+
+                            <td>
+                                {% if report.type == "found" %}
+                                    {{ report.desk_status|replace("_", " ")|title }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+                {% else %}
+
+                <div class="empty-state">
+                    <h3>No reports yet</h3>
+                    <p>New lost and found reports will appear here.</p>
+                    <a href="/report-lost" class="primary-button">
+                        Report an Item
+                    </a>
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

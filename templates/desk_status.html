@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReFind | Update Desk Status</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <header class="page-header">
+            <div>
+                <h1>ReFind<span>.</span></h1>
+                <p>Campus Lost & Found Management System</p>
+            </div>
+
+            <a href="/" class="back-link">← Dashboard</a>
+        </header>
+
+        <main class="form-page">
+
+            <div class="page-title">
+                <p class="eyebrow">DESK MANAGEMENT</p>
+                <h2>Update Desk Status</h2>
+                <p>Manage the physical location of reported found items.</p>
+            </div>
+
+            <div class="form-card">
+
+                {% if message %}
+                    <div class="form-message">{{ message }}</div>
+                {% endif %}
+
+                {% if found_reports %}
+
+                <form action="/update-desk-status" method="POST">
+
+                    <div class="form-group">
+                        <label>Select Found Report</label>
+
+                        <select name="report_id" required>
+
+                            {% for report in found_reports %}
+
+                                <option value="{{ report.id }}">
+                                    ID {{ report.id }} - {{ report.name|title }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>New Desk Status</label>
+
+                        <select name="desk_status" required>
+                            <option value="Not_deposited">Not Deposited</option>
+                            <option value="Deposited">Deposited at Desk</option>
+                        </select>
+
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        Update Desk Status
+                    </button>
+
+                </form>
+
+                {% else %}
+
+                    <div class="empty-state">
+                        <h3>No Active Found Reports</h3>
+                        <p>There are currently no open found-item reports to update.</p>
+                        <a href="/report-found" class="primary-button">
+                            Report a Found Item
+                        </a>
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

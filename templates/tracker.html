@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReFind | Campus Lost & Found</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <h2>ReFind<span>.</span></h2>
+                <p>Campus Lost & Found</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="/" class="active">Dashboard</a>
+
+                <a href="/report-lost">Report Lost</a>
+
+                <a href="/report-found">Report Found</a>
+
+                <a href="/reports">All Reports</a>
+
+                <a href="/matches">Possible Matches</a>
+
+                <a href="/update-desk-status">Update Desk Status</a>
+
+                <a href="/mark-returned">Mark Returned</a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>ReFind</p>
+                <small>Campus Lost & Found Management System</small>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Dashboard -->
+        <main class="dashboard-content">
+
+            <!-- Topbar -->
+            <div class="topbar">
+
+                <div>
+                    <p class="eyebrow">CAMPUS MANAGEMENT SYSTEM</p>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <span class="system-label">Local Application</span>
+
+            </div>
+
+
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+
+                <div>
+
+                    <p class="eyebrow">WELCOME TO REFIND</p>
+
+                    <h2>Lost something? Find your way back.</h2>
+
+                    <p>
+                        Welcome to ReFind — a smarter way to report,
+                        manage and recover lost belongings across campus.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- Dashboard Statistics -->
+            <section class="stats-section">
+
+                <div class="stat-card">
+                <p>Total Lost Items</p>
+                <h2>{{ total_lost }}</h2>
+                </div>
+
+    <div class="stat-card">
+        <p>Total Found Items</p>
+        <h2>{{ total_found }}</h2>
+    </div>
+
+    <div class="stat-card">
+        <p>Items Returned</p>
+        <h2>{{ total_returned }}</h2>
+    </div>
+
+</section>
+
+
+        
+
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Quick Actions</h2>
+                        <p>Choose what you would like to do.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="action-grid">
+
+
+                    <!-- Report Lost -->
+                    <a href="/report-lost" class="action-card">
+
+                        <span class="action-icon">+</span>
+
+                        <h3>Report Lost Item</h3>
+
+                        <p>
+                            Submit details about an item you have lost.
+                        </p>
+
+                    </a>
+
+
+                    <!-- Report Found -->
+                    <a href="/report-found" class="action-card">
+
+                        <span class="action-icon">+</span>
+
+                        <h3>Report Found Item</h3>
+
+                        <p>
+                            Help someone recover their belongings.
+                        </p>
+
+                    </a>
+
+
+                    <!-- View Reports -->
+                    <a href="/reports" class="action-card">
+
+                        <span class="action-icon">≡</span>
+
+                        <h3>View All Reports</h3>
+
+                        <p>
+                            Browse all reported lost and found items.
+                        </p>
+
+                    </a>
+
+
+                    <!-- Possible Matches -->
+                    <a href="/matches" class="action-card">
+
+                        <span class="action-icon">↔</span>
+
+                        <h3>Possible Matches</h3>
+
+                        <p>
+                            Find matching lost and found reports.
+                        </p>
+
+                    </a>
+
+
+                    <!-- Update Desk Status -->
+                    <a href="/update-desk-status" class="action-card">
+
+                        <span class="action-icon">✓</span>
+
+                        <h3>Update Desk Status</h3>
+
+                        <p>
+                            Manage the physical desk status of items.
+                        </p>
+
+                    </a>
+
+
+                    <!-- Mark Returned -->
+                    <a href="/mark-returned" class="action-card">
+
+                        <span class="action-icon">↗</span>
+
+                        <h3>Mark as Returned</h3>
+
+                        <p>
+                            Complete the item return process.
+                        </p>
+
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+
+                ReFind © 2026 |
+                Campus Lost & Found Management System
+
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

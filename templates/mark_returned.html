@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReFind | Mark Item Returned</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <header class="page-header">
+            <div>
+                <h1>ReFind<span>.</span></h1>
+                <p>Campus Lost & Found Management System</p>
+            </div>
+
+            <a href="/" class="back-link">← Dashboard</a>
+        </header>
+
+        <main class="form-page">
+
+            <div class="page-title">
+                <p class="eyebrow">ITEM RETURN MANAGEMENT</p>
+                <h2>Mark Item as Returned</h2>
+                <p>Complete the recovery process once an item has been returned to its owner.</p>
+            </div>
+
+            <div class="form-card">
+
+                {% if message %}
+                    <div class="form-message">{{ message }}</div>
+                {% endif %}
+
+                {% if lost_reports %}
+
+                <form action="/mark-returned" method="POST">
+
+                    <div class="form-group">
+
+                        <label>Select Lost Report</label>
+
+                        <select name="report_id" required>
+
+                            {% for report in lost_reports %}
+
+                                <option value="{{ report.id }}">
+                                    ID {{ report.id }} - {{ report.name|title }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        Confirm Item Returned
+                    </button>
+
+                </form>
+
+                {% else %}
+
+                <div class="empty-state">
+                    <h3>No Active Lost Reports</h3>
+                    <p>There are currently no open lost-item reports.</p>
+
+                    <a href="/report-lost" class="primary-button">
+                        Report a Lost Item
+                    </a>
+                </div>
+
+                {% endif %}
+
+            </div>
+
+            <p class="form-note">
+                Only mark an item as returned after confirming that it has reached its owner.
+            </p>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

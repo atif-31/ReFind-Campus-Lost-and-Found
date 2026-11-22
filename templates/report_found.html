@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReFind | Report Found Item</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <header class="page-header">
+            <div>
+                <h1>ReFind<span>.</span></h1>
+                <p>Campus Lost & Found Management System</p>
+            </div>
+
+            <a href="/" class="back-link">← Dashboard</a>
+        </header>
+
+        <main class="form-page">
+
+            <div class="page-title">
+                <p class="eyebrow">FOUND ITEM REGISTRATION</p>
+                <h2>Report a Found Item</h2>
+                <p>Help reunite someone with their missing belongings.</p>
+            </div>
+
+            <div class="form-card">
+
+                <form action="/report-found" method="POST">
+
+                    <div class="form-group">
+                        <label>Item Name</label>
+                        <input type="text" name="name"
+                               placeholder="e.g. Black Wallet" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" name="category"
+                               placeholder="e.g. Accessories" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description"
+                                  placeholder="Describe the item, including colour, brand or unique features"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Where Was It Found?</label>
+                        <input type="text" name="location"
+                               placeholder="e.g. University Library" required>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Current Item Location</label>
+
+                        <p class="form-helper">
+                            Please indicate whether the item has been deposited
+                            at the physical Lost and Found desk.
+                        </p>
+
+                        <label class="radio-option">
+                            <input type="radio" name="desk_status"
+                                   value="Not_deposited" required>
+                            With me / Not deposited at the desk
+                        </label>
+
+                        <label class="radio-option">
+                            <input type="radio" name="desk_status"
+                                   value="Deposited">
+                            Deposited at the Lost and Found desk
+                        </label>
+
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        Submit Found Report
+                    </button>
+
+                </form>
+
+            </div>
+
+            <p class="form-note">
+                Accurate information helps us reunite items with their owners.
+            </p>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
